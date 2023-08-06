@@ -3,16 +3,14 @@ import {
   Box,
   Container,
   Heading,
-  Text,
   Select,
   Button,
   Textarea,
   Flex,
   ChakraProvider,
-  CSSReset,
   useColorMode,
-  VStack,
-  Icon,Grid, Center
+  Icon,
+  Center
 } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 import {SunIcon,MoonIcon } from '@chakra-ui/icons'// Import sun and moon icons
@@ -56,7 +54,7 @@ function App() {
   const handleConvert = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/code/convert',
+        'https://convertercode.onrender.com/code/convert',
         {
           code: inputCode,
           fromLanguage: selectedFromLanguage,
@@ -74,7 +72,7 @@ function App() {
   const handleDebug = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/code/debug',
+        'https://convertercode.onrender.com/code/debug',
         {
           code: inputCode,
           language: selectedFromLanguage,
@@ -95,10 +93,14 @@ function App() {
         <Container maxW="container.xl"  h={'full'} boxShadow="lg" >
           {/* <Flex align="center" justify="space-around" mb="4"> */}
             <Box>
-              <Heading size="lg" mb="2">
-               <Center> Code Converter & Debugger App</Center>
+              <Heading size="xl" mb="2">
+               <Center 
+                  bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text'
+                  fontSize='5xl'
+                  fontWeight='extrabold'
+                > Code Converter & Debugger App</Center>
               </Heading>
-              <Center fontSize="sm">Convert your code from one language to another</Center>
+              <Center fontSize="2xl" fontWeight={'bold'}>Convert your code from one language to another</Center>
             </Box>
             <Button onClick={toggleColorMode} ml="95%" mb={10}> {/* Toggling logo at top-right corner */}
               <Icon 
@@ -146,7 +148,7 @@ function App() {
                   <option value="C">C</option>
                   {/* Add more language options here */}
                 </Select>
-                <Button colorScheme="blue" w={'50%'} onClick={handleConvert} display={'block'} m={'auto'} mt={5} mb={5}>
+                <Button colorScheme="twitter" w={'50%'} onClick={handleConvert} display={'block'} m={'auto'} mt={5} mb={5}>
                   Convert
                 </Button>
 
@@ -155,14 +157,13 @@ function App() {
                   isReadOnly
                   placeholder="Converted code will appear here..."
                   size="lg"
-                  
                   resize="vertical"
                   bg={colorMode === 'light' ? 'white' : 'gray.800'}
                   color={colorMode === 'light' ? 'black' : 'white'}
                 />
                 </Box>
                 <Box flex="1">
-                <Button colorScheme="red" w={'50%'} onClick={handleDebug} display={'block'} m={'auto'}  mb={5}>
+                <Button colorScheme="twitter" w={'50%'} onClick={handleDebug} display={'block'} m={'auto'}  mb={5}>
                   Debug
                 </Button>
                 <Textarea
