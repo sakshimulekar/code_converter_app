@@ -1,0 +1,8 @@
+# render.yaml
+
+services:
+  - name: my-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm server
+    healthCheckPath: /health
